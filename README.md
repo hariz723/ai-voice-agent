@@ -6,6 +6,8 @@ This project implements an AI voice agent. Its purpose is to provide a conversat
 
 This project uses [uv](https://github.com/astral-sh/uv) for dependency management.
 
+To create your own api keys [LiveKit](https://cloud.livekit.io/projects/p_27y1rkwlgb6/settings/keys)
+
 ## Setup Instructions
 
 1.  **Install uv**:
