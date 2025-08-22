@@ -4,42 +4,40 @@ This project implements an AI voice agent. Its purpose is to provide a conversat
 
 ## Setup Instructions
 
-This project uses [Poetry](https://python-poetry.org/) for dependency management.
+This project uses [uv](https://github.com/astral-sh/uv) for dependency management.
 
-1.  **Install Poetry**:
-    If you don't have Poetry installed, you can install it using pip:
+## Setup Instructions
+
+1.  **Install uv**:
+    If you don't have `uv` installed, you can install it using pip:
     ```bash
-    pip install poetry
+    pip install uv
     ```
+    Alternatively, you can follow the official installation instructions for `uv` to get the standalone executable.
 
 2.  **Initialize Project (if not already done)**:
-    Navigate to the project root directory and initialize Poetry. This will create a `pyproject.toml` file.
-    ```bash
-    poetry init --no-interaction
-    ```
-    If `poetry` command is not directly in your PATH, you might need to use:
-    ```bash
-    python -m poetry init --no-interaction
-    ```
+    Navigate to the project root directory and initialize `pyproject.toml` if it doesn't exist. `uv` works with `pyproject.toml` directly. If you need to create one, you can use `poetry init` or create it manually. For now, we assume `pyproject.toml` is present.
 
 3.  **Install Dependencies**:
-    Once `pyproject.toml` is set up, install all project dependencies:
+    Install all project dependencies using `uv`:
     ```bash
-    poetry install
+    uv sync
     ```
+    This command will create a virtual environment and install dependencies based on `pyproject.toml` and `uv.lock`.
 
 ## How to Run the Project
 
-1.  **Activate the Poetry Shell**:
-    This command activates the virtual environment managed by Poetry.
-    ```bash
-    poetry shell
-    ```
+1.  **Activate the uv Virtual Environment**:
+    `uv` automatically manages the virtual environment. You can run commands within it using `uv run`.
 
 2.  **Run the Agent**:
-    Assuming `agent.py` is the main entry point, you can run the project using:
+    To use the turn-detector, silero, or noise-cancellation plugins, you first need to download the model files:
     ```bash
-    python agent.py
+    uv run agent.py download-files
+    ```
+    Then, you can run the main agent console:
+    ```bash
+    uv run agent.py console
     ```
 
 ## Project Structure
@@ -51,4 +49,3 @@ This project uses [Poetry](https://python-poetry.org/) for dependency management
 *   `README.md`: This file.
 *   `.env.example`: Example file for environment variables.
 *   `.gitignore`: Specifies intentionally untracked files to ignore.
-*   `requirements.txt`: (Legacy) May contain initial dependencies, but Poetry is now used.
